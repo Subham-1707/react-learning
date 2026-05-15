@@ -1,0 +1,115 @@
+Q1)  What is Emmet? 
+
+Emmet is a built-in feature in Visual Studio Code that improves HTML and CSS workflows by 
+converting short, shorthand abbreviations into full, structured code.
+
+Q2)  Difference between a Library and Framework?
+
+Library: 
+========
+1) A library is a collection of reusable functions/components.
+eg: react, axios, owl crousel
+
+2) You import only what you need.
+
+3) YOU decide:
+where to call it
+when to call it
+
+Framework: 
+=========
+A framework provides a environment like:
+architecture, folder structure, lifecycle, rules, flow and pattern.
+eg: Angular, Django
+
+Framework says: “Write code THIS way.” Framework controls the flow.
+
+ Q3: What is CDN? Why do we use it? 
+ =========================================
+ A CDN (Content Delivery Network) is a network of servers distributed across different locations 
+ worldwide that helps deliver website content faster to users.
+
+ User Request
+     ↓
+Nearest CDN Server
+     ↓
+If cached → send directly
+Else → fetch from origin server
+
+CDN stores copies globally.
+When user opens app:
+files come from nearest CDN location
+app loads faste
+
+Common CDN Providers: Cloudflare, Amazon CloudFront
+
+Q4)  Why is React known as React? 
+React is called React because it reacts to changes in application
+ state and efficiently updates the user interface.
+Whenever data changes, React automatically updates only the required 
+parts of the DOM using the Virtual DOM concept
+
+Q5) What is crossorigin in <script> tag?
+crossorigin is used when loading files from another domain (CDN/server).
+It controls: CORS behavior, error sharing, credentials/cookies handling
+
+crossorigin helps browser decide:
+whether request is allowed
+whether cookies should be sent
+whether detailed errors can be shown
+
+Q6) Difference Between React and ReactDOM ?
+Both are different packages in React ecosystem.
+
+React: React is the brain, Core library, Creates components, Contains hooks, state,
+JSX logic,Platform-independent .
+
+ReactDOM: ReactDOM is the bridge between React and browser DOM.
+ReactDOM.createRoot(document.getElementById("root"))
+It takes React components and renders them into actual HTML.
+React prepares UI logic.
+ReactDOM shows it in browser.
+
+Q7) What are async and defer in script tag?
+They control HOW JavaScript loads in browser.
+Very important for performance
+
+Normal script: <script src="app.js"></script>
+Browser behavior:
+
+HTML parsing stops
+↓
+JS downloads
+↓
+JS executes
+↓
+HTML parsing resumes
+
+Website becomes slower.
+
+async:
+============
+<script async src="app.js"></script>
+Behavior:
+HTML parsing continues
+↓
+JS downloads parallelly
+↓
+Executes immediately after download.
+
+Execution order is NOT guaranteed.
+If multiple async scripts exist:
+whichever downloads first executes first
+
+defer:
+==========
+<script defer src="app.js"></script>
+Behavior:
+HTML parsing continues
+↓
+JS downloads parallelly
+↓
+Executes AFTER HTML parsing completes:
+
+Execution order IS maintained.
+Perfect for:React, app scripts, dependent scripts
