@@ -113,3 +113,21 @@ Executes AFTER HTML parsing completes:
 
 Execution order IS maintained.
 Perfect for:React, app scripts, dependent scripts
+
+
+lecture -2 ignite:
+----------------------
+A bundler is a tool that takes all your project files and combines them into optimized
+ files that the browser can understand and load efficiently.
+
+ In a React project, you usually have:
+
+Multiple JavaScript files
+CSS files
+Images
+Components
+External packages (node_modules)
+
+A bundler collects everything and creates a final build for the browser.
+
+some famous bundler : VITE, Parcel, webpack
