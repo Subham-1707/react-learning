@@ -117,6 +117,35 @@ Perfect for:React, app scripts, dependent scripts
 
 lecture -2 ignite:
 ----------------------
+/* 
+PARCEL - A BUNDLER:
+----------------------------
+  It is a feature provided by bundlers like Webpack and Parcel.
+   1. HMR - Hot Module Replacement
+   2. File watchers algorithm - C++. It watches for changes in the source code files and triggers a reload when a change is detected.
+   3. BUNDLER
+   4. MINIFY
+   5. CLEANING OUR CODE
+   6. DEV AND PRODUCTION BUILD
+   7. SUPER FAST BUILD TIME
+   8. IMAGE OPTIMIZATION
+   9. CACHE WHILE DEVELOPMENT
+   10. COMPATIBILITY WITH OLDER BROWSERS
+   11. COMPRESSION
+   12. MANAGE PORT NO
+   13. ZERO CONFIGURATION
+   14. CREATE A SERVER 
+
+   TRANSITIVE DEPENDENCIES - If A depends on B and B depends on C,
+    then A has a transitive dependency on C.
+    In other words, A indirectly depends on C through B.
+
+    browserlist - It is a configuration file used in web development to
+     specify the target browsers for a project. It helps tools like Babel and 
+     Autoprefixer to determine which JavaScript features and CSS prefixes 
+     to include in the final output, ensuring compatibility with the specified browsers.
+*/
+
 A bundler is a tool that takes all your project files and combines them into optimized
  files that the browser can understand and load efficiently.
 
@@ -131,3 +160,64 @@ External packages (node_modules)
 A bundler collects everything and creates a final build for the browser.
 
 some famous bundler : VITE, Parcel, webpack
+
+23-05-2026:
+===============
+// React Fragment - It is a way to group multiple elements without adding an extra node to the DOM. It is used to return multiple elements from a component without wrapping them in a div or any other element.
+   yes we can do and make React Fragment inside another React Fragment  
+
+25-05-2026:
+-----------------
+short hand destructuring of object in map.
+
+without destructuring:
+---------------------------
+const Body = () => {
+    return (
+        <div className='restaurant-list'> 
+          {
+            restaurantList.map( restaurant => {
+                return <RestaurantCard  key={restaurant.data.id} {...restaurant.data} />
+            })
+          }
+          
+        </div>
+    )
+}
+
+
+with destructuring:
+----------------------
+const Body = () => {
+    return (
+        <div className='restaurant-list'> 
+          {
+            restaurantList.map( ( { data }) => {
+                return <RestaurantCard  key={data.id} {...data} />
+            })
+          }
+          
+        </div>
+    )
+}
+
+
+// React element - because it is returning a jsx element
+// writing JSX code - JavaScript XML
+
+/**
+        Header
+            - logo
+            - nav items (right side)
+            - cart (right side)
+        Body  
+          - search bar
+          - restaurant list
+             - restaurant card
+             - image
+             - Rating
+             - cuisine  
+        Footer
+          - links
+          - copfyright
+    */
