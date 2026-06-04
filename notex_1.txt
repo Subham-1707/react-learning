@@ -221,3 +221,47 @@ const Body = () => {
           - links
           - copfyright
     */
+
+// letcture - 4:
+====================
+1) What is State in React?
+State is data that belongs to a component and can change over time.
+When state changes, React automatically re-renders the component and updates the UI.
+
+Example:
+Suppose you have a counter:
+let count = 0;
+If count changes, React won't update the screen automatically.
+Instead, React uses state:
+const [count, setCount] = useState(0);
+Now whenever setCount() is called, React updates the UI.
+State is a built-in React object used to store data that can change during the lifetime of a component. 
+When state changes, React re-renders the component.
+
+2) What is a React Hook?
+A Hook is a special React function that lets you use React 
+features inside Functional Components.
+Before Hooks, many features like state were available only in Class Components.
+Hooks allow Functional Components to:
+Manage state
+Handle side effects
+Access context
+Work with refs
+
+Common Hooks
+useState()
+useEffect()
+useContext()
+useRef()
+useMemo()
+useCallback()
+
+Hooks are special functions introduced in React 16.8 that
+ allow Functional Components to use React features such as state and 
+ lifecycle behavior.
+
+ 3) What is useState?
+ useState is a React Hook used to create and manage state in
+  a Functional Component.
+  
+
