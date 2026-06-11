@@ -263,5 +263,72 @@ Hooks are special functions introduced in React 16.8 that
  3) What is useState?
  useState is a React Hook used to create and manage state in
   a Functional Component.
+
+  4) what is useEffect ?
+  useEffect is a React Hook used to perform side effects in a component.
+
+  What is a Side Effect?
+  A side effect is any operation that happens outside of rendering UI.
+  Examples: 
+  1) API calls (fetch/ axios call), 
+  2) Setting timers like setTimeout()
+  3) Event listeners like window.addEventListener()
+  4) Updating document title like document.title = "React App
+  Without useEffect, these operations may run repeatedly and cause bugs.
+
+  5) What is expression and statement in js ?
+  Expression:
+  An expression is anything that produces a value.
+   eg: 10, a + b, 'hello'
+
+  Statement: 
+  A statement is an instruction that performs an action.
+  eg: let age = 25; if else, for loop etc
+
+Function Expression:
+
+const greet = function() {
+   console.log("Hello");
+};
+This is called a function expression because the function is used as a value and assigned to a variable.
+
+Function Declaration:
+function greet() {
+   console.log("Hello");
+}
+This is a statement/declaration.
+
+5) What is Optional Chaining (?.) in JavaScript?
+Optional Chaining is a safe way to access nested properties of an object without 
+getting an error if some property is null or undefined.
+
+const user = {
+  name: "Subham"
+};
+
+console.log(user.address.city); 
+❌ Error: Cannot read properties of undefined (reading 'city')
+
+Because: user.address is undefined
+
+Solution Using Optional Chaining
+console.log(user.address?.city);
+Output: undefined ✅ No error.
+
+Q6) Why do we use await response.json()?
+
+const response = await fetch(url);
+fetch() sends an HTTP request.
+It returns a Promise that resolves to a Response object.
+At this point, you have received the response, but not the JSON data yet.
+
+Why response.json()?
+The server sends data as a stream of bytes.
+React/JavaScript cannot automatically convert those bytes into a JavaScript object.
+So we do: response.json(), This reads the response body and converts it into a JavaScript object.
+But this conversion also takes time. Therefore:response.json() returns another Promise.
+That's why we need another await to handle this promise object.
+
+
   
 
