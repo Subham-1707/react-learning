@@ -113,3 +113,222 @@ Executes AFTER HTML parsing completes:
 
 Execution order IS maintained.
 Perfect for:React, app scripts, dependent scripts
+
+
+lecture -2 ignite:
+----------------------
+/* 
+PARCEL - A BUNDLER:
+----------------------------
+  It is a feature provided by bundlers like Webpack and Parcel.
+   1. HMR - Hot Module Replacement
+   2. File watchers algorithm - C++. It watches for changes in the source code files and triggers a reload when a change is detected.
+   3. BUNDLER
+   4. MINIFY
+   5. CLEANING OUR CODE
+   6. DEV AND PRODUCTION BUILD
+   7. SUPER FAST BUILD TIME
+   8. IMAGE OPTIMIZATION
+   9. CACHE WHILE DEVELOPMENT
+   10. COMPATIBILITY WITH OLDER BROWSERS
+   11. COMPRESSION
+   12. MANAGE PORT NO
+   13. ZERO CONFIGURATION
+   14. CREATE A SERVER 
+
+   TRANSITIVE DEPENDENCIES - If A depends on B and B depends on C,
+    then A has a transitive dependency on C.
+    In other words, A indirectly depends on C through B.
+
+    browserlist - It is a configuration file used in web development to
+     specify the target browsers for a project. It helps tools like Babel and 
+     Autoprefixer to determine which JavaScript features and CSS prefixes 
+     to include in the final output, ensuring compatibility with the specified browsers.
+*/
+
+A bundler is a tool that takes all your project files and combines them into optimized
+ files that the browser can understand and load efficiently.
+
+ In a React project, you usually have:
+
+Multiple JavaScript files
+CSS files
+Images
+Components
+External packages (node_modules)
+
+A bundler collects everything and creates a final build for the browser.
+
+some famous bundler : VITE, Parcel, webpack
+
+23-05-2026:
+===============
+// React Fragment - It is a way to group multiple elements without adding an extra node to the DOM. It is used to return multiple elements from a component without wrapping them in a div or any other element.
+   yes we can do and make React Fragment inside another React Fragment  
+
+25-05-2026:
+-----------------
+short hand destructuring of object in map.
+
+without destructuring:
+---------------------------
+const Body = () => {
+    return (
+        <div className='restaurant-list'> 
+          {
+            restaurantList.map( restaurant => {
+                return <RestaurantCard  key={restaurant.data.id} {...restaurant.data} />
+            })
+          }
+          
+        </div>
+    )
+}
+
+
+with destructuring:
+----------------------
+const Body = () => {
+    return (
+        <div className='restaurant-list'> 
+          {
+            restaurantList.map( ( { data }) => {
+                return <RestaurantCard  key={data.id} {...data} />
+            })
+          }
+          
+        </div>
+    )
+}
+
+
+// React element - because it is returning a jsx element
+// writing JSX code - JavaScript XML
+
+/**
+        Header
+            - logo
+            - nav items (right side)
+            - cart (right side)
+        Body  
+          - search bar
+          - restaurant list
+             - restaurant card
+             - image
+             - Rating
+             - cuisine  
+        Footer
+          - links
+          - copfyright
+    */
+
+// letcture - 4:
+====================
+1) What is State in React?
+State is data that belongs to a component and can change over time.
+When state changes, React automatically re-renders the component and updates the UI.
+
+Example:
+Suppose you have a counter:
+let count = 0;
+If count changes, React won't update the screen automatically.
+Instead, React uses state:
+const [count, setCount] = useState(0);
+Now whenever setCount() is called, React updates the UI.
+State is a built-in React object used to store data that can change during the lifetime of a component. 
+When state changes, React re-renders the component.
+
+2) What is a React Hook?
+A Hook is a special React function that lets you use React 
+features inside Functional Components.
+Before Hooks, many features like state were available only in Class Components.
+Hooks allow Functional Components to:
+Manage state
+Handle side effects
+Access context
+Work with refs
+
+Common Hooks
+useState()
+useEffect()
+useContext()
+useRef()
+useMemo()
+useCallback()
+
+Hooks are special functions introduced in React 16.8 that
+ allow Functional Components to use React features such as state and 
+ lifecycle behavior.
+
+ 3) What is useState?
+ useState is a React Hook used to create and manage state in
+  a Functional Component.
+
+  4) what is useEffect ?
+  useEffect is a React Hook used to perform side effects in a component.
+
+  What is a Side Effect?
+  A side effect is any operation that happens outside of rendering UI.
+  Examples: 
+  1) API calls (fetch/ axios call), 
+  2) Setting timers like setTimeout()
+  3) Event listeners like window.addEventListener()
+  4) Updating document title like document.title = "React App
+  Without useEffect, these operations may run repeatedly and cause bugs.
+
+  5) What is expression and statement in js ?
+  Expression:
+  An expression is anything that produces a value.
+   eg: 10, a + b, 'hello'
+
+  Statement: 
+  A statement is an instruction that performs an action.
+  eg: let age = 25; if else, for loop etc
+
+Function Expression:
+
+const greet = function() {
+   console.log("Hello");
+};
+This is called a function expression because the function is used as a value and assigned to a variable.
+
+Function Declaration:
+function greet() {
+   console.log("Hello");
+}
+This is a statement/declaration.
+
+5) What is Optional Chaining (?.) in JavaScript?
+Optional Chaining is a safe way to access nested properties of an object without 
+getting an error if some property is null or undefined.
+
+const user = {
+  name: "Subham"
+};
+
+console.log(user.address.city); 
+❌ Error: Cannot read properties of undefined (reading 'city')
+
+Because: user.address is undefined
+
+Solution Using Optional Chaining
+console.log(user.address?.city);
+Output: undefined ✅ No error.
+
+Q6) Why do we use await response.json()?
+
+const response = await fetch(url);
+fetch() sends an HTTP request.
+It returns a Promise that resolves to a Response object.
+At this point, you have received the response, but not the JSON data yet.
+
+Why response.json()?
+The server sends data as a stream of bytes.
+React/JavaScript cannot automatically convert those bytes into a JavaScript object.
+So we do: response.json(), This reads the response body and converts it into a JavaScript object.
+But this conversion also takes time. Therefore:response.json() returns another Promise.
+That's why we need another await to handle this promise object.
+
+
+  
+

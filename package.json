@@ -1,0 +1,31 @@
+{
+  "name": "react-learning",
+  "version": "1.0.0",
+  "description": "learning-react",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Subham-1707/react-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Subham-1707/react-learning/issues"
+  },
+  "homepage": "https://github.com/Subham-1707/react-learning#readme",
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  }
+}
