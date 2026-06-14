@@ -329,6 +329,18 @@ So we do: response.json(), This reads the response body and converts it into a J
 But this conversion also takes time. Therefore:response.json() returns another Promise.
 That's why we need another await to handle this promise object.
 
+To find the version of the package by cmd:
+npm list react-router-dom
+
+1. Remove current version:
+npm uninstall react-router-dom react-router
+
+2. Install v6
+npm install react-router-dom@6
+
+3. Verify
+npm list react-router-dom
+
 
   
 

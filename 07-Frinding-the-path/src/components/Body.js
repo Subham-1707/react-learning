@@ -1,6 +1,8 @@
 import RestaurantCard from './RestaurantCard'
 import { useState, useEffect } from 'react'
-import Shimmer from './shimmerUi'
+import { restaurantList } from '../../../lib/mockData'
+import Shimmer from './ShimmerUi'
+import { Link } from 'react-router-dom'
 
 function filteredData(restaurants, searchText) {
   return restaurants.filter((restaurant) =>
@@ -20,18 +22,27 @@ const Body = () => {
   async function getRestaurants() {
     try {
       const response = await fetch(
-        'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9046136&lng=77.614948&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+        'https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.6900707&lng=86.1527675&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
       )
       const json = await response.json()
       const data = json?.data?.cards
-      const list = checkJsonData(data)
+      let list = checkJsonData(data)
+
+      // Api is not working so we are using mock data else condition.
+      list = []
 
       if (list && list.length > 0) {
         setAllRestaurants(list)
         setFilteredRestaurants(list)
+      }else{
+        console.log("else condition Mock data")
+        setAllRestaurants(restaurantList)
+        setFilteredRestaurants(restaurantList)
       }
     } catch (error) {
       console.log(error)
+      setAllRestaurants(restaurantList)
+      setFilteredRestaurants(restaurantList)
     } 
   }
 
@@ -70,11 +81,12 @@ const Body = () => {
 
       <div className='restaurant-list'>
         {filteredRestaurants.map((restaurant) => (
+          <Link to = {"/restaurant/" + restaurant?.info?.id}  key={restaurant?.info?.id}> 
           <RestaurantCard
-            key={restaurant.info.id}
             {...restaurant.info}
             platformCharge='5'
           />
+          </Link>
         ))}
       </div>
     </>
