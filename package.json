@@ -25,7 +25,9 @@
     "parcel": "^2.16.4"
   },
   "dependencies": {
+    "node-fetch": "^2.7.0",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^6.30.4"
   }
 }
