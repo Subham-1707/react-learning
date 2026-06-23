@@ -1,0 +1,84 @@
+// 1. componentDidMount — Real Example: Fetch GitHub Profile
+// Scenario: When your profile page opens → fetch and show user data.
+
+async componentDidMount() {
+    // Page just opened → now fetch data
+    const response = await fetch('https://api.github.com/users/Subham-1707')
+    const data = await response.json()
+    this.setState({ userInfo: data })
+}
+
+Real life: Like opening Instagram — the app opens first (blank), then your feed loads. The feed loading = componentDidMount.
+
+2. componentDidUpdate — Real Example: Search Bar
+Scenario: User types in a search box → fetch new results every time the query changes.
+
+class SearchPage extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            query: '',
+            results: []
+        }
+    }
+
+    // Every time query changes → fetch new results
+    async componentDidUpdate(prevState) {
+        if (prevState.query !== this.state.query) {
+            console.log('Query changed! Searching for:', this.state.query)
+
+            const response = await fetch(
+                `https://api.github.com/search/users?q=${this.state.query}`
+            )
+            const data = await response.json()
+            this.setState({ results: data.items })
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <input
+                    type="text"
+                    placeholder="Search GitHub users..."
+                    onChange={(e) => this.setState({ query: e.target.value })}
+                />
+                {this.state.results.map(user => (
+                    <p key={user.id}>{user.login}</p>
+                ))}
+            </div>
+        )
+    }
+}
+
+Real life: Like Google Search — every time you type a new letter, it fetches new suggestions. Each keystroke = componentDidUpdate.
+
+3. componentWillUnmount — Real Example: Live Timer / Chat
+Scenario: A live timer is running on screen → when you leave the page, the timer must stop. If not stopped = memory leak.
+
+class LiveTimer extends Component {
+    constructor(props) {
+        super(props)
+        this.state = { time: 0 }
+    }
+
+    componentDidMount() {
+        console.log('Timer started!')
+
+        // Start timer when component appears
+        this.interval = setInterval(() => {
+            this.setState({ time: this.state.time + 1 })
+        }, 1000)
+    }
+
+    componentWillUnmount() {
+        console.log('Timer stopped! Cleaning up...')
+
+        // ✅ MUST stop timer when component leaves screen
+        clearInterval(this.interval)
+    }
+
+    render() {
+        return <h1>Time: {this.state.time} seconds</h1>
+    }
+}

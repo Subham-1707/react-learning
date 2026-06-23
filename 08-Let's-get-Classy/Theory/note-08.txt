@@ -1,0 +1,104 @@
+1) How do you create Nested Routes react-router-dom configuration?
+
+2) Why do we use super(props) in constructor?
+super(props) is used in React class components to call the constructor 
+of the parent class (React.Component) and 
+initialize this.props. It must be called before accessing this inside the constructor.
+and it is mandatory also. javascript class rule:
+If a class extends another class: class Child extends Parent
+then you must call:super() before using:this
+Otherwise:
+ReferenceError:
+Must call super constructor before using 'this'
+
+3) ❌ Don't mutate state directly:
+ In React, state should only be updated through the setter function. Mutating the variable first (count++) bypasses React's state tracking and can cause subtle bugs in more complex scenarios.
+
+We use setCount() because React does not track direct variable changes. setCount() tells React that the state has changed and that the component should re-render. Directly assigning count = 2 changes the value but does not update the UI.
+
+ 4) Rule of thumb: Use {} block body when you have multiple lines of logic. For a single function call, the short form is cleaner.
+ onClick={() => {
+    setCount(count + 1)   // ✅ no return needed
+}}
+Here you're not returning anything — you're just calling setCount(). The function's job is to execute setCount, not to return a value. onClick doesn't care about a return value at all.
+
+5) useEffect render sequence:
+useEffect(() => {
+  console.log('useEffect');
+});
+
+1. No Dependency Array
+When does it run?
+After the first render
+After every re-render
+
+2. Empty Dependency Array:
+useEffect(() => {
+  console.log('useEffect');
+}, []);
+
+When does it run?
+Only once after the initial render.
+Initial render
+useEffect
+
+After clicking buttons and updating state:
+No more useEffect calls
+
+3. Dependency Array with Variables
+useEffect(() => {
+  console.log('count changed');
+}, [count]);
+
+Runs:
+------------
+On first render
+Whenever count changes
+
+useEffect(() => {}) runs after every render because no dependencies are specified. useEffect(() => {}, []) runs only once after the initial render because the empty dependency array tells React that the effect does not depend on any state or props.
+
+Q6) Why can't we have the callback function of useEffect async?
+We cannot make the useEffect callback async because React expects the callback to 
+return either a cleanup function or nothing. An async function always returns a Promise, which React cannot use as a cleanup function.
+ Therefore, we keep the useEffect callback synchronous and call an inner async function for
+  asynchronous operations like API requests.
+
+  componentDidMount:
+React ignores return value
+→ async allowed
+
+useEffect:
+React checks return value
+→ must return cleanup function or undefined
+→ async not allowed
+
+Q7) why render call twice ?
+
+setState() triggers a re-render because React needs to update the UI with the latest state. Whenever state changes, React runs the render method again, compares the new Virtual DOM with the previous one, 
+and updates only the changed parts of the real DOM.
+
+Initial Render:
+Constructor state:
+this.state = {
+  userInfo: {}
+}
+React calls: child-render
+
+componentDidMount Runs When setState() runs:
+State Changed
+↓
+Re-render Component
+React calls: child-render again.
+
+Actual Flow Without Strict Mode:
+Constructor
+↓
+Render #1
+↓
+componentDidMount
+↓
+API Call
+↓
+setState()
+↓
+Render #2
